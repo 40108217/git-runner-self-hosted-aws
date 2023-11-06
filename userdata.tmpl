@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Insall pre-requisite
+yum update -y
+sudo yum install -y libicu
+
+# Install github runner application
+sudo -u ec2-user mkdir /home/ec2-user/actions-runner
+sudo -u ec2-user curl -o /home/ec2-user/actions-runner/actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
+sudo -u ec2-user tar xzf /home/ec2-user/actions-runner/actions-runner-linux-x64-2.311.0.tar.gz -C /home/ec2-user/actions-runner
+EC2_INSTANCE_ID=$(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id)
+sudo -u ec2-user bash -c "cd /home/ec2-user/actions-runner/; ./config.sh --url ${github_repo_url} --token ${github_repo_pat_token} --name "${runner_name}-$${EC2_INSTANCE_ID}" --work _work --labels ${labels} --runasservice"
+
+
+cd /home/ec2-user/actions-runner/ && ./svc.sh install && ./svc.sh start
+
+
+
+
+

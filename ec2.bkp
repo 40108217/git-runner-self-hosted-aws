@@ -23,8 +23,8 @@ resource "aws_instance" "web" {
   sudo curl -o actions-runner-linux-x64-2.311.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
   sudo tar xzf ./actions-runner-linux-x64-2.311.0.tar.gz
   sudo yum install -y libicu
-  exit
-  ./config.sh --url https://github.com/40108217/git-runner-self-hosted-aws --token AOD4MDTEV6SXZPZNBPP7WZ3FIHRNO
+ 
+  ./config.sh --url https://github.com/40108217/git-runner-self-hosted-aws --token AOD4MDSA5X47PRVRNEQ3QV3FINTVY
   sudo ./svc.sh install
   sudo ./svc.sh start
   EOF
