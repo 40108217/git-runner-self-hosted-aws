@@ -21,7 +21,6 @@ resource "aws_launch_template" "ec2_launch_template" {
   image_id      = var.ami
   instance_type = var.instance_type
   #key_name      = var.key_name
-
   user_data = base64encode(templatefile("${path.cwd}/userdata.tmpl", { github_repo_url = var.github_repo_url, github_repo_pat_token = var.github_repo_pat_token, runner_name = var.runner_name, labels = join(",", var.labels) }))
   iam_instance_profile {
     name = "veru-ssm-role"

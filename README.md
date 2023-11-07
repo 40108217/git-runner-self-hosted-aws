@@ -17,6 +17,7 @@ Phase 3: Auto Scaling template
 a) Use the latest AMI Linux image
     Github Runner setup commands will vary basis the OS and Architect selection 
 b) UserData to be used for scale out with github runner variables
+    While calling the user data template, use the tfvars template to use the variablized github runner commands
 c) Add the SSM role for easy management
 d) Call the Launch template in auto scaling resource
 
