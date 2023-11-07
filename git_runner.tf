@@ -17,19 +17,28 @@ resource "aws_launch_template" "ec2_launch_template" {
   description = "Launch Template for GitHub Runners EC2 AutoScaling Group"
   #ami           = data.aws_ami.latest_amazon_linux_2.id
   #instance_type = "t2.micro"
-
+  #iam_instance_profile = aws_iam_instance_profile.veru-ssm-role.name
   image_id      = var.ami
   instance_type = var.instance_type
   #key_name      = var.key_name
   user_data = base64encode(templatefile("${path.cwd}/userdata.tmpl", { github_repo_url = var.github_repo_url, github_repo_pat_token = var.github_repo_pat_token, runner_name = var.runner_name, labels = join(",", var.labels) }))
+  
   iam_instance_profile {
-    name = "veru-ssm-role"
+    name = aws_iam_instance_profile.veru-ssm-role.name
   }
+
   
   tags = {
     Name = "github_runner"
   }
 }
+
+# Imported this resource from AWS
+resource "aws_iam_instance_profile" "veru-ssm-role" {
+  name = "veru-ssm-role"
+  role = "veru-ssm-role"
+}
+
 
 resource "aws_autoscaling_group" "github_runners_autoscaling_group" {
   name                      = "github_runners_autoscaling_group"

@@ -18,13 +18,13 @@ variable "key_name" {
 variable "github_repo_url" {
   description = "The GitHub Repo URL for which the GitHub Runner to be registered with"
   type        = string
-  default = "https://github.com/40108217/git-runner-self-hosted-aws"
+  default = "https://github.com/40108217/git-runner-codecommit.git"
 }
 
 variable "github_repo_pat_token" {
   description = "The GitHub Repo Pat Token that would be used by the GitHub Runner to authenticate with the GitHub Repo"
   type        = string
-  default = "AOD4MDQFK6Q462IMS5GWMUDFJHPYM"
+  default = "AOD4MDQNT5XHJA46S7XBF23FJIUWG"
 }
 
 variable "runner_name" {
