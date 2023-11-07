@@ -19,6 +19,7 @@ a) Use the latest AMI Linux image
 b) UserData to be used for scale out with github runner variables
     While calling the user data template, use the tfvars template to use the variablized github runner commands
 c) Add the SSM role for easy management
+    Exported the existing SSM role from AWS
 d) Call the Launch template in auto scaling resource
 
 Since, github runner is set to never expire. Hence, sam token can be used later to scale-out the runner instances.
