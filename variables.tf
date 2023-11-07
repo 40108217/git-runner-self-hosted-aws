@@ -24,7 +24,7 @@ variable "github_repo_url" {
 variable "github_repo_pat_token" {
   description = "The GitHub Repo Pat Token that would be used by the GitHub Runner to authenticate with the GitHub Repo"
   type        = string
-  default = "AOD4MDV37NA3KKARPEY2Y3LFJDA56"
+  default = "AOD4MDQFK6Q462IMS5GWMUDFJHPYM"
 }
 
 variable "runner_name" {
