@@ -22,5 +22,5 @@ c) Add the SSM role for easy management
     Exported the existing SSM role from AWS
 d) Call the Launch template in auto scaling resource
 
-Since, github runner is set to never expire. Hence, sam token can be used later to scale-out the runner instances.
+Since, github runner is set to never expire. Hence, sam token can be used later to scale-out the runner instance.
 
